@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Inputs = () => {
+const Inputs = props => {
 	const [inputValue, setInputValue] = useState({
 		amount: '',
 		title: '',
@@ -10,16 +10,18 @@ const Inputs = () => {
 
 	const handleChangeValueAmount = e => {
 		setInputValue({
+			...inputValue,
 			amount: e.target.value,
 		})
-		console.log(e.target.value)
+		// console.log(e.target.value)
 	}
 
 	const handleChangeValueTitle = e => {
 		setInputValue({
+			...inputValue,
 			title: e.target.value,
 		})
-		console.log(e.target.value)
+		// console.log(e.target.value)
 	}
 
 	const handleChangeSelect = e => {
@@ -33,8 +35,29 @@ const Inputs = () => {
 			title: inputValue.title,
 			type: select,
 		}
-		console.log(newTransaction)
+		// console.log(newTransaction)
+		props.click(newTransaction)
+
+		handleCleanContent()
+		handleValidationInput()
 	}
+
+	const handleCleanContent = () => {
+		setInputValue({
+			amount: '',
+			title: '',
+		})
+		setSelect('choose')
+	}
+
+	const handleValidationInput = () => {
+		const numbers = /^[-+]?[0-9]+$/
+		if (inputValue.amount.match(numbers)) {
+			console.log(inputValue.amount)
+		}
+	}
+
+	// var numbers = /^[-+]?[0-9]+$/;
 
 	return (
 		<div className='box-input'>
@@ -47,7 +70,7 @@ const Inputs = () => {
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
 			</div>
 			<div className='input-select'>
-				<select name='' id='' onChange={handleChangeSelect}>
+				<select value={select} name='' id='' onChange={handleChangeSelect}>
 					<option value='choose'>WYBIERZ</option>
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
