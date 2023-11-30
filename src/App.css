@@ -44,14 +44,23 @@ select {
 	padding: 0.4em 1em;
 }
 
-.btns {
+/* .btns {
 	align-self: flex-end;
-}
+} */
 
 .btn-add {
+	width: 100%;
+	background-color: #e0e0e0;
+	border: 0.04em solid #555555;
 	padding: 0.4em 1em;
 	margin-left: 1em;
 	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-add:hover {
+	background-color: #555555;
+	color: #e0e0e0;
 }
 
 .box-acount {

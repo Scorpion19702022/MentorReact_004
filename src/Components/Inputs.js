@@ -53,9 +53,7 @@ const Inputs = props => {
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (inputValue.amount.match(numbers)) {
-			setInputValue({
-				amount: false,
-			})
+			console.log(inputValue.amount)
 		}
 	}
 
@@ -66,10 +64,16 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
+				<div className='box-error'>
+					<p>wypełnij poprawnie pole</p>
+				</div>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
+				<div className='box-error'>
+					<p>wypełnij poprawnie pole</p>
+				</div>
 			</div>
 			<div className='input-select'>
 				<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -77,6 +81,9 @@ const Inputs = props => {
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
 				</select>
+				<div className='box-error'>
+					<p>wybierz transakcję</p>
+				</div>
 			</div>
 			<div className='btns'>
 				<button className='btn-add' onClick={handleAddTransaction}>
