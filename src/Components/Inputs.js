@@ -53,7 +53,9 @@ const Inputs = props => {
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (inputValue.amount.match(numbers)) {
-			console.log(inputValue.amount)
+			setInputValue({
+				amount: false,
+			})
 		}
 	}
 
