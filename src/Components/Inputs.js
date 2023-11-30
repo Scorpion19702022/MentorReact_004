@@ -51,17 +51,11 @@ const Inputs = props => {
 	}
 
 	const handleValidationInput = () => {
-		// const numbers = /^[-+]?[0-9]+$/
-		// if (inputValue.amount.match(numbers)) {
-		// 	console.log(inputValue.amount)
-		// }
-		if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
+		const numbers = /^[-+]?[0-9]+$/
+		if (inputValue.amount.match(numbers)) {
+			console.log(inputValue.amount)
+		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
 			alert('wypełnij poprawnie pola')
-			setInputValue({
-				amount: 'wypełnij poprawnie wszystkie pola',
-				title: '',
-			})
-			setSelect('')
 		}
 	}
 
