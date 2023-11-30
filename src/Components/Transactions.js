@@ -6,8 +6,14 @@ const Transactions = ({ transaction }) => {
 			<div className={item.type === 'influence' ? 'bgc-green' : 'bgc-red'} key={index}>
 				<ul>
 					<li>Kwota: {item.amount}</li>
+					<span>
+						<span>&#42510;</span>
+					</span>
 					<li>Treść: {item.title}</li>
-					<li>{item.type}</li>
+					<span>
+						<span>&#42510;</span>
+					</span>
+					<li>{item.type === 'influence' ? 'wpłata' : 'wypłata'}</li>
 				</ul>
 			</div>
 		)
