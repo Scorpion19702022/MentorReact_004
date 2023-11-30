@@ -26,10 +26,16 @@ const Inputs = props => {
 
 	const handleChangeSelect = e => {
 		setSelect(e.target.value)
-		console.log(select)
+		// console.log(select)
 	}
 
 	const handleAddTransaction = () => {
+		const isError = handleValidationInput()
+		console.log(isError)
+		if (isError) {
+			return
+		}
+
 		const newTransaction = {
 			amount: inputValue.amount,
 			title: inputValue.title,
@@ -52,10 +58,11 @@ const Inputs = props => {
 
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
-		if (inputValue.amount.match(numbers)) {
+		if (!inputValue.amount.match(numbers)) {
 			console.log(inputValue.amount)
+			return 'zły format'
 		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			alert('wypełnij poprawnie pola')
+			return 'pola nie mogą być puste'
 		}
 	}
 
