@@ -11,8 +11,6 @@ const App = () => {
 		setTransaction([...transaction, newTransaction])
 	}
 
-	console.log(transaction)
-
 	return (
 		<div className='App'>
 			<Inputs click={handleNewAddTransaction} />

@@ -44,9 +44,9 @@ select {
 	padding: 0.4em 1em;
 }
 
-/* .btns {
+.btns {
 	align-self: flex-end;
-} */
+}
 
 .btn-add {
 	width: 100%;
