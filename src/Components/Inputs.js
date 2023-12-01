@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Inputs = props => {
 	const [inputValue, setInputValue] = useState({
@@ -7,6 +7,12 @@ const Inputs = props => {
 	})
 
 	const [select, setSelect] = useState('choose')
+
+	const [error, setError] = useState({
+		amount: '',
+		title: '',
+		select: '',
+	})
 
 	const handleChangeValueAmount = e => {
 		setInputValue({
@@ -31,7 +37,7 @@ const Inputs = props => {
 
 	const handleAddTransaction = () => {
 		const isError = handleValidationInput()
-		console.log(isError)
+		// console.log(isError)
 		if (isError) {
 			return
 		}
@@ -56,13 +62,26 @@ const Inputs = props => {
 		setSelect('choose')
 	}
 
+	useEffect(() => {
+		setError({
+			amount: '',
+			title: '',
+			select: '',
+		})
+	}, [error])
+
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (!inputValue.amount.match(numbers)) {
-			console.log(inputValue.amount)
+			// console.log(inputValue.amount)
 			return 'zły format'
 		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'pola nie mogą być puste'
+			setError({
+				amount: 'wypełnij pole',
+				title: 'wypełnij pole',
+				select: 'wybierz transakcję',
+			})
+			return
 		}
 	}
 
@@ -73,10 +92,12 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
+				<p className='error'>{error.amount}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
+				<p className='error'>{error.title}</p>
 			</div>
 			<div className='input-select'>
 				<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -84,6 +105,7 @@ const Inputs = props => {
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
 				</select>
+				<p className='error'>{error.select}</p>
 			</div>
 			<div className='btns'>
 				<button className='btn-add' onClick={handleAddTransaction}>
