@@ -29,7 +29,9 @@ const Inputs = props => {
 		// console.log(select)
 	}
 
-	const [textError, setTextError] = useState('')
+	const [textError, setTextError] = useState({
+		stan: '',
+	})
 
 	const handleAddTransaction = () => {
 		const isError = handleValidationInput()
@@ -37,7 +39,9 @@ const Inputs = props => {
 
 		console.log(textError)
 		if (isError) {
-			return setTextError(isError)
+			return setTextError({
+				stan: isError,
+			})
 		}
 
 		const newTransaction = {
@@ -63,9 +67,9 @@ const Inputs = props => {
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (!inputValue.amount.match(numbers)) {
-			return 'wypełnij poprawnie pole'
+			return 'text'
 		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'wypełnij poprawnie pole'
+			return 'dodaj'
 		}
 	}
 
@@ -76,7 +80,7 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-				<p>{textError === 'wypełnij poprawnie pole' ? textError : ''}</p>
+				<p>{textError.stan === 'text' ? textError.stan : ''}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
