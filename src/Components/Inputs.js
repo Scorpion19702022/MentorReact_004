@@ -29,9 +29,7 @@ const Inputs = props => {
 		// console.log(select)
 	}
 
-	const [textError, setTextError] = useState({
-		stan: '',
-	})
+	const [textError, setTextError] = useState('')
 
 	const handleAddTransaction = () => {
 		const isError = handleValidationInput()
@@ -39,9 +37,7 @@ const Inputs = props => {
 
 		console.log(textError)
 		if (isError) {
-			return setTextError({
-				stan: isError,
-			})
+			return setTextError(isError)
 		}
 
 		const newTransaction = {
@@ -64,12 +60,16 @@ const Inputs = props => {
 		setSelect('choose')
 	}
 
+	let errorsOne = 'wypełnij poprawnie pole'
+	let errorsTwo = 'wypełnij poprawnie pole'
+	let errorsThree = 'wypełnij poprawnie pole'
+
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (!inputValue.amount.match(numbers)) {
-			return 'text'
-		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'dodaj'
+			return errorsOne
+		} else if (inputValue.title === '') {
+			return errorsTwo
 		}
 	}
 
@@ -80,11 +80,12 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-				<p>{textError.stan === 'text' ? textError.stan : null}</p>
+				<p>{textError === errorsOne ? textError : null}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
+				<p>{textError === errorsTwo ? textError : null}</p>
 			</div>
 			<div className='input-select'>
 				<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -92,6 +93,7 @@ const Inputs = props => {
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
 				</select>
+				<p>{textError === errorsThree ? textError : null}</p>
 			</div>
 			<div className='btns'>
 				<button className='btn-add' onClick={handleAddTransaction}>
