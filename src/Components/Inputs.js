@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Inputs = props => {
 	const [inputValue, setInputValue] = useState({
@@ -62,26 +62,27 @@ const Inputs = props => {
 		setSelect('choose')
 	}
 
-	useEffect(() => {
-		setError({
-			amount: '',
-			title: '',
-			select: '',
-		})
-	}, [error])
+	// useEffect(() => {
+	// 	setError({
+	// 		amount: error.amount,
+	// 		title: error.title,
+	// 		select: error.select,
+	// 	})
+	// }, [error])
 
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (!inputValue.amount.match(numbers)) {
-			// console.log(inputValue.amount)
-			return 'zły format'
-		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			setError({
+			return setError({
+				...error,
+				amount: 'musisz podać liczbę',
+			})
+		} else if (inputValue.amount === '' && inputValue.title === '' && select === 'choose') {
+			return setError({
 				amount: 'wypełnij pole',
 				title: 'wypełnij pole',
 				select: 'wybierz transakcję',
 			})
-			return
 		}
 	}
 
