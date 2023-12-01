@@ -65,7 +65,7 @@ const Inputs = props => {
 		if (!inputValue.amount.match(numbers)) {
 			return 'wypełnij poprawnie pole'
 		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'dodaj'
+			return 'wypełnij poprawnie pole'
 		}
 	}
 
