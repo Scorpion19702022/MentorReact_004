@@ -72,6 +72,7 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
+				<p>{}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
