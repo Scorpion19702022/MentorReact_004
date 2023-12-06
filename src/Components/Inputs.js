@@ -8,6 +8,8 @@ const Inputs = props => {
 
 	const [select, setSelect] = useState('choose')
 
+	const errorText = 'błędnie wypełnione pole'
+
 	const handleChangeValueAmount = e => {
 		setInputValue({
 			...inputValue,
@@ -71,9 +73,9 @@ const Inputs = props => {
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 		if (!inputValue.amount.match(numbers) || inputValue.amount === '') {
-			return 'text'
+			return errorText
 		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'text'
+			return errorText
 		}
 	}
 
@@ -84,12 +86,12 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-				<p>{textError.error === 'text' ? textError.error : ''}</p>
+				<p>{textError.error === errorText ? textError.error : ''}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
-				<p>{textError.error === 'text' ? textError.error : ''}</p>
+				<p>{textError.error === errorText ? textError.error : ''}</p>
 			</div>
 			<div className='input-select'>
 				<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -97,7 +99,7 @@ const Inputs = props => {
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
 				</select>
-				<p>{textError.error === 'text' ? textError.error : ''}</p>
+				<p>{textError.error === errorText ? textError.error : ''}</p>
 			</div>
 			<div className='btns'>
 				<button className='btn-add' onClick={handleAddTransaction}>
