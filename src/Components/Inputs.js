@@ -30,7 +30,9 @@ const Inputs = props => {
 	}
 
 	const [textError, setTextError] = useState({
-		error: '',
+		errorAll: '',
+		errorAmount: '',
+		errorOption: '',
 	})
 
 	const handleAddTransaction = () => {
@@ -38,13 +40,29 @@ const Inputs = props => {
 		// console.log(isError)
 
 		console.log(textError)
-		if (isError) {
+		if (isError === 'wszystkie pola muszą być uzupełnione') {
 			return setTextError({
-				error: isError,
+				errorAll: isError,
+				errorAmount: '',
+				errorOption: '',
+			})
+		} else if (isError === 'zły format kwoty') {
+			return setTextError({
+				errorAll: '',
+				errorAmount: isError,
+				errorOption: '',
+			})
+		} else if (isError === 'zły format treści') {
+			return setTextError({
+				errorAll: '',
+				errorAmount: '',
+				errorOption: isError,
 			})
 		} else {
 			setTextError({
-				error: '',
+				errorAll: '',
+				errorAmount: '',
+				errorOption: '',
 			})
 		}
 
@@ -70,10 +88,15 @@ const Inputs = props => {
 
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
-		if (!inputValue.amount.match(numbers) || inputValue.amount === '') {
-			return 'błąd'
-		} else if (inputValue.amount === '' || inputValue.title === '' || select === 'choose') {
-			return 'błąd'
+
+		console.log(inputValue.amount.trim().length)
+
+		if (inputValue.amount.trim().length === 0 || inputValue.title.trim().length === 0 || select === 'choose') {
+			return 'wszystkie pola muszą być uzupełnione'
+		} else if (!inputValue.amount.match(numbers)) {
+			return 'zły format kwoty'
+		} else if (inputValue.title.match(numbers)) {
+			return 'zły format treści'
 		}
 	}
 
@@ -84,12 +107,12 @@ const Inputs = props => {
 			<div className='input'>
 				<label htmlFor=''>Podaj kwotę:</label>
 				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-				<p>{textError.error === 'błąd' ? textError.error : ''}</p>
+				<p>{textError.errorAmount ? textError.errorAmount : ''}</p>
 			</div>
 			<div className='input'>
 				<label htmlFor=''>Informacja:</label>
 				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
-				<p>{textError.error === 'błąd' ? textError.error : ''}</p>
+				<p>{textError.errorOption ? textError.errorOption : ''}</p>
 			</div>
 			<div className='input-select'>
 				<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -97,13 +120,13 @@ const Inputs = props => {
 					<option value='influence'>WPŁATA</option>
 					<option value='paycheck'>WYPŁATA</option>
 				</select>
-				<p>{textError.error === 'błąd' ? textError.error : ''}</p>
 			</div>
 			<div className='btns'>
 				<button className='btn-add' onClick={handleAddTransaction}>
 					dodaj
 				</button>
 			</div>
+			<p>{textError.errorAll ? textError.errorAll : ''}</p>
 		</div>
 	)
 }
