@@ -3,7 +3,7 @@ import React from 'react'
 const Transactions = ({ transaction }) => {
 	const transactionsInfo = transaction.map((item, index) => {
 		return (
-			<div className={item.type === 'influence' ? 'bgc-green' : 'bgc-red'} key={index}>
+			<div className={item.type === 'influence' ? 'bgc-green' : 'bgc-blue'} key={index}>
 				<ul>
 					<li>Kwota: {item.amount}</li>
 					<span>
