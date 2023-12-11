@@ -22,12 +22,14 @@
 }
 
 .wrapper {
+	position: relative;
 	width: 100%;
 	padding: 3em 0em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #191b18;
+	border-bottom: 0.04em solid #666d61;
 }
 
 .box-input {
@@ -66,17 +68,16 @@ select {
 
 .btn-add {
 	width: 100%;
-	background-color: #e0e0e0;
-	border: 0.04em solid #555555;
-	padding: 0.4em 1em;
-	margin-left: 1em;
+	padding: 0.5em 1em;
+	margin-left: 3em;
+	background-color: #b2ffff;
+	border: 0.04em solid #007f7f;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 }
 
 .btn-add:hover {
-	background-color: #555555;
-	color: #e0e0e0;
+	background-color: #00cccc;
 }
 
 .box-acount {
@@ -132,6 +133,18 @@ span {
 	display: flex;
 }
 
-.error {
-	color: red;
+.all-error {
+	margin-top: 0.4em;
+	position: absolute;
+	color: #e50700;
+}
+.one-error {
+	position: absolute;
+	top: 60%;
+	color: #e50700;
+}
+.two-error {
+	position: absolute;
+	top: 60%;
+	color: #e50700;
 }
