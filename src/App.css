@@ -1,3 +1,9 @@
+/* https://www.color-hex.com/color/555d50 */
+
+/* https://www.color-hex.com/color/00ffff */
+
+/* https://www.color-hex.com/color/66ff00 */
+
 *,
 *::before,
 *::after {
@@ -13,6 +19,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #2a2e28;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
 }
 
 .box-input {
@@ -106,8 +118,4 @@ li {
 span {
 	font-size: 1.4em;
 	display: flex;
-}
-
-.error {
-	color: red;
 }

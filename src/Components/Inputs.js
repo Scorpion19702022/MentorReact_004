@@ -103,30 +103,32 @@ const Inputs = props => {
 	// var numbers = /^[-+]?[0-9]+$/;
 
 	return (
-		<div className='box-input'>
-			<div className='input'>
-				<label htmlFor=''>Podaj kwotę:</label>
-				<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-				<p>{textError.errorAmount ? textError.errorAmount : ''}</p>
+		<div className='wrapper'>
+			<div className='box-input'>
+				<div className='input'>
+					<label htmlFor=''>Podaj kwotę:</label>
+					<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
+					<p className='error'>{textError.errorAmount ? textError.errorAmount : ''}</p>
+				</div>
+				<div className='input'>
+					<label htmlFor=''>Informacja:</label>
+					<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
+					<p className='error'>{textError.errorOption ? textError.errorOption : ''}</p>
+				</div>
+				<div className='input-select'>
+					<select value={select} name='' id='' onChange={handleChangeSelect}>
+						<option value='choose'>WYBIERZ</option>
+						<option value='influence'>WPŁATA</option>
+						<option value='paycheck'>WYPŁATA</option>
+					</select>
+				</div>
+				<div className='btns'>
+					<button className='btn-add' onClick={handleAddTransaction}>
+						dodaj
+					</button>
+				</div>
 			</div>
-			<div className='input'>
-				<label htmlFor=''>Informacja:</label>
-				<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
-				<p>{textError.errorOption ? textError.errorOption : ''}</p>
-			</div>
-			<div className='input-select'>
-				<select value={select} name='' id='' onChange={handleChangeSelect}>
-					<option value='choose'>WYBIERZ</option>
-					<option value='influence'>WPŁATA</option>
-					<option value='paycheck'>WYPŁATA</option>
-				</select>
-			</div>
-			<div className='btns'>
-				<button className='btn-add' onClick={handleAddTransaction}>
-					dodaj
-				</button>
-			</div>
-			<p>{textError.errorAll ? textError.errorAll : ''}</p>
+			<p className='error'>{textError.errorAll ? textError.errorAll : ''}</p>
 		</div>
 	)
 }
