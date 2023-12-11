@@ -15,7 +15,6 @@
 .App {
 	width: 100vw;
 	height: 100vh;
-	padding: 2em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -23,8 +22,12 @@
 }
 
 .wrapper {
+	width: 100%;
+	padding: 3em 0em;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	background-color: #191b18;
 }
 
 .box-input {
@@ -41,7 +44,8 @@
 }
 
 label {
-	margin-bottom: 0.1em;
+	color: #7fffff;
+	margin-bottom: 0.2em;
 }
 
 input {
@@ -118,4 +122,16 @@ li {
 span {
 	font-size: 1.4em;
 	display: flex;
+}
+
+.box-error {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height: 30px;
+	display: flex;
+}
+
+.error {
+	color: red;
 }

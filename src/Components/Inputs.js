@@ -108,12 +108,12 @@ const Inputs = props => {
 				<div className='input'>
 					<label htmlFor=''>Podaj kwotę:</label>
 					<input type='text' placeholder='kwota' value={inputValue.amount} onChange={handleChangeValueAmount} />
-					<p className='error'>{textError.errorAmount ? textError.errorAmount : ''}</p>
+					<p className={!textError.errorAll ? 'error' : null}>{textError.errorAmount ? textError.errorAmount : ''}</p>
 				</div>
 				<div className='input'>
 					<label htmlFor=''>Informacja:</label>
 					<input type='text' placeholder='tekst' value={inputValue.title} onChange={handleChangeValueTitle} />
-					<p className='error'>{textError.errorOption ? textError.errorOption : ''}</p>
+					<p className={!textError.errorAll ? 'error' : null}>{textError.errorOption ? textError.errorOption : ''}</p>
 				</div>
 				<div className='input-select'>
 					<select value={select} name='' id='' onChange={handleChangeSelect}>
@@ -128,7 +128,9 @@ const Inputs = props => {
 					</button>
 				</div>
 			</div>
-			<p className='error'>{textError.errorAll ? textError.errorAll : ''}</p>
+			<div className='box-error'>
+				<p className={textError.errorAll ? 'error' : null}>{textError.errorAll ? textError.errorAll : ''}</p>
+			</div>
 		</div>
 	)
 }
