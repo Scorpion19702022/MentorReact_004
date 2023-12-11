@@ -69,7 +69,7 @@ select {
 .btn-add {
 	width: 100%;
 	padding: 0.5em 1em;
-	margin-left: 3em;
+	margin-left: 2em;
 	background-color: #b2ffff;
 	border: 0.04em solid #007f7f;
 	cursor: pointer;
