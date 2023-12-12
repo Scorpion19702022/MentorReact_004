@@ -89,7 +89,7 @@ const Inputs = props => {
 	const handleValidationInput = () => {
 		const numbers = /^[-+]?[0-9]+$/
 
-		console.log(inputValue.amount.trim().length)
+		// console.log(inputValue.amount.trim().length)
 
 		if (inputValue.amount.trim().length === 0 || inputValue.title.trim().length === 0 || select === 'choose') {
 			return 'wszystkie pola muszą być uzupełnione'
@@ -134,6 +134,7 @@ const Inputs = props => {
 			</div>
 			<div className='box-error'>
 				<p className={textError.errorAll ? 'all-error' : null}>{textError.errorAll ? textError.errorAll : ''}</p>
+				<p className='all-error'>{props.translationLength >= 18 ? 'więcej transakcji nie możesz dodać' : null}</p>
 			</div>
 		</div>
 	)

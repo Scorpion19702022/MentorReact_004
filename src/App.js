@@ -11,11 +11,14 @@ const App = () => {
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
+		if (transaction.length >= 18) {
+			setTransaction([...transaction])
+		}
 	}
 
 	return (
 		<div className='App'>
-			<Inputs click={handleNewAddTransaction} />
+			<Inputs click={handleNewAddTransaction} translationLength={transaction.length} />
 			<Transactions transaction={transaction} />
 		</div>
 	)
