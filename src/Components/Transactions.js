@@ -5,15 +5,17 @@ const Transactions = ({ transaction }) => {
 		return (
 			<div className={item.type === 'influence' ? 'bgc-green' : 'bgc-blue'} key={index}>
 				<ul>
-					<li>Kwota: {item.amount}</li>
-					<span>
-						<span>&#42510;</span>
-					</span>
-					<li>Treść: {item.title}</li>
-					<span>
-						<span>&#42510;</span>
-					</span>
-					<li>{item.type === 'influence' ? 'wpłata' : 'wypłata'}</li>
+					<li>
+						Kwota: <span>{item.amount}</span>
+					</li>
+
+					<li>
+						Treść: <span>{item.title}</span>
+					</li>
+
+					<li>
+						<span>{item.type === 'influence' ? 'wpłata' : 'wypłata'}</span>
+					</li>
 				</ul>
 			</div>
 		)
