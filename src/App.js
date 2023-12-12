@@ -7,6 +7,8 @@ import Transactions from './Components/Transactions'
 const App = () => {
 	const [transaction, setTransaction] = useState([])
 
+	console.log(transaction.length)
+
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
 	}
