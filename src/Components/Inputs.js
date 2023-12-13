@@ -91,11 +91,14 @@ const Inputs = props => {
 
 		// console.log(inputValue.amount.trim().length)
 
-		if (inputValue.amount.trim().length === 0 || inputValue.title.trim().length === 0 || select === 'choose') {
+		if (
+			(inputValue.amount.trim().length === 0 || inputValue.title.trim().length === 0 || select === 'choose') &&
+			props.translationLength < 18
+		) {
 			return 'wszystkie pola muszą być uzupełnione'
-		} else if (!inputValue.amount.match(numbers)) {
+		} else if (!inputValue.amount.match(numbers) && props.translationLength < 18) {
 			return 'zły format kwoty'
-		} else if (inputValue.title.match(numbers)) {
+		} else if (inputValue.title.match(numbers) && props.translationLength < 18) {
 			return 'zły format treści'
 		}
 	}
