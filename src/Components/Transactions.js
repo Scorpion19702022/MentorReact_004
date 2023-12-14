@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Transactions = ({ transaction }) => {
+import Bin from '../assets/bin.png'
+
+const Transactions = ({ transaction, deleteTransaction }) => {
 	const transactionsInfo = transaction.map((item, index) => {
 		return (
 			<div className={item.type === 'influence' ? 'bgc-green' : 'bgc-blue'} key={index}>
@@ -17,6 +19,9 @@ const Transactions = ({ transaction }) => {
 						<span>{item.type === 'influence' ? 'wpłata' : 'wypłata'}</span>
 					</li>
 				</ul>
+				<button className='btn-bin' onClick={() => deleteTransaction(item)}>
+					<img src={Bin} alt='' />
+				</button>
 			</div>
 		)
 	})

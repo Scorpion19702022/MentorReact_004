@@ -21,6 +21,19 @@
 	background-color: #2a2e28;
 }
 
+.box-info {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 1em;
+}
+
+.heading-info {
+	font-size: 1.4em;
+	margin: 0em 4em;
+	color: #b2ffff;
+}
+
 .wrapper {
 	position: relative;
 	width: 100%;
@@ -66,6 +79,10 @@ select {
 	align-self: flex-end;
 }
 
+.box-select {
+	margin: 1em 0em;
+}
+
 .btn-add {
 	width: 100%;
 	padding: 0.5em 1em;
@@ -92,6 +109,7 @@ select {
 	width: 260px;
 	min-height: 200px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: #286600;
@@ -103,6 +121,7 @@ select {
 	width: 260px;
 	min-height: 200px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: #006666;
@@ -150,4 +169,16 @@ span {
 	position: absolute;
 	top: 60%;
 	color: #e50700;
+}
+
+.btn-bin {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 1em;
+}
+
+img {
+	width: 30px;
+	align-self: flex-end;
 }

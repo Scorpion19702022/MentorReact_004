@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
+import SelectTransaction from './SelectTransaction'
 
 const Inputs = props => {
 	const [inputValue, setInputValue] = useState({
@@ -67,11 +70,12 @@ const Inputs = props => {
 		}
 
 		const newTransaction = {
+			id: uuidv4(),
 			amount: inputValue.amount,
 			title: inputValue.title,
 			type: select,
 		}
-		// console.log(newTransaction)
+		console.log(newTransaction)
 		props.click(newTransaction)
 
 		handleCleanContent()
@@ -139,6 +143,7 @@ const Inputs = props => {
 				<p className={textError.errorAll ? 'all-error' : null}>{textError.errorAll ? textError.errorAll : ''}</p>
 				<p className='all-error'>{props.translationLength >= 18 ? 'więcej transakcji nie możesz dodać' : null}</p>
 			</div>
+			<SelectTransaction changeTypeTransaction={props.changeTypeTransaction} />
 		</div>
 	)
 }
