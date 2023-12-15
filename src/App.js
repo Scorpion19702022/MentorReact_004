@@ -28,9 +28,10 @@ const App = () => {
 	// 	}
 	// }, [transaction, typeTransaction])
 
+	const newArrayTransaction = [...transaction]
+
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
-		const newArrayTransaction = [...transaction]
 		const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
 		const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
 		if (typeTransaction === 'in') {
