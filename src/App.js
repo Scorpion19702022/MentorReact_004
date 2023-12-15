@@ -17,9 +17,10 @@ const App = () => {
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
+		const newArrayTransaction = [...transaction]
+		const showAll = transaction.filter(item => item.type)
+		console.log(newArrayTransaction.map(item => item.type === 'influence'))
 	}
-
-	console.log(typeTransaction)
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])

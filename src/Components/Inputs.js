@@ -75,7 +75,7 @@ const Inputs = props => {
 			title: inputValue.title,
 			type: select,
 		}
-		console.log(newTransaction)
+		// console.log(newTransaction)
 		props.click(newTransaction)
 
 		handleCleanContent()
