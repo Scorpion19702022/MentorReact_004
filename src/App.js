@@ -15,15 +15,31 @@ const App = () => {
 
 	const [typeTransaction, setTypeTransaction] = useState('all')
 
+	// useEffect(() => {
+	// 	const newArrayTransaction = [...transaction]
+	// 	const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
+	// 	const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+	// 	if (typeTransaction === 'in') {
+	// 		return setTransaction(selectTransactionInfluence)
+	// 	} else if (typeTransaction === 'out') {
+	// 		return setTransaction(selectTransactionPaycheck)
+	// 	} else {
+	// 		return setTransaction(newArrayTransaction)
+	// 	}
+	// }, [transaction, typeTransaction])
+
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
 		const newArrayTransaction = [...transaction]
 		const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
+		const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
 		if (typeTransaction === 'in') {
-			return selectTransactionInfluence
+			setTransaction(selectTransactionInfluence)
+		} else if (typeTransaction === 'out') {
+			setTransaction(selectTransactionPaycheck)
+		} else {
+			setTransaction(newArrayTransaction)
 		}
-
-		console.log(selectTransactionInfluence)
 	}
 
 	const handleNewAddTransaction = newTransaction => {
