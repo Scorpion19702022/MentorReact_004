@@ -15,33 +15,28 @@ const App = () => {
 
 	const [typeTransaction, setTypeTransaction] = useState('all')
 
-	// useEffect(() => {
-	// 	const newArrayTransaction = [...transaction]
-	// 	const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
-	// 	const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
-	// 	if (typeTransaction === 'in') {
-	// 		return setTransaction(selectTransactionInfluence)
-	// 	} else if (typeTransaction === 'out') {
-	// 		return setTransaction(selectTransactionPaycheck)
-	// 	} else {
-	// 		return setTransaction(newArrayTransaction)
-	// 	}
-	// }, [transaction, typeTransaction])
-
 	const newArrayTransaction = [...transaction]
 
-	const handleChangeTypeTransaction = type => {
-		setTypeTransaction(type)
-		const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
-		const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+	const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
+	const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+
+	useEffect(() => {
 		if (typeTransaction === 'in') {
 			setTransaction(selectTransactionInfluence)
 		} else if (typeTransaction === 'out') {
 			setTransaction(selectTransactionPaycheck)
-		} else {
-			setTransaction(newArrayTransaction)
+		}
+	}, [selectTransactionInfluence, selectTransactionPaycheck, typeTransaction])
+
+	const handleChangeTypeTransaction = type => {
+		setTypeTransaction(type)
+		if (typeTransaction === 'all') {
+			return transaction
 		}
 	}
+
+	// console.log(transaction)
+	// console.log(newArrayTransaction)
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
@@ -80,8 +75,8 @@ const App = () => {
 				return { ...prevState, influence: prevState.influence - Number(trans.amount) }
 			})
 		}
-		console.log(count)
-		console.log(trans)
+		// console.log(count)
+		// console.log(trans)
 	}
 
 	return (
