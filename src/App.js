@@ -14,23 +14,30 @@ const App = () => {
 	})
 
 	const [typeTransaction, setTypeTransaction] = useState('all')
+	const [newArrayTransaction, setNewArrayTransaction] = useState([])
 
-	const newArrayTransaction = [...transaction]
-	const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
-	const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+	// const newArrayTransaction = [...transaction]
+	// const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
+	// const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+
+	const influence = newArrayTransaction.filter(item => item.type === 'influence')
+	const paycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
+		setNewArrayTransaction([...transaction])
 
-		if (typeTransaction === 'in') {
-			setTransaction(selectTransactionInfluence)
-		} else if (typeTransaction === 'out') {
-			setTransaction(selectTransactionPaycheck)
-		} else if (typeTransaction === 'all') {
-			setTransaction(newArrayTransaction)
-		}
-
+		console.log(influence)
+		console.log(paycheck)
 		console.log(newArrayTransaction)
+
+		// if (typeTransaction === 'in') {
+		// 	setTransaction(selectTransactionInfluence)
+		// } else if (typeTransaction === 'out') {
+		// 	setTransaction(selectTransactionPaycheck)
+		// } else if (typeTransaction === 'all') {
+		// 	setTransaction(newArrayTransaction)
+		// }
 	}
 
 	const handleNewAddTransaction = newTransaction => {
