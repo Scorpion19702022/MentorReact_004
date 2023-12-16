@@ -16,10 +16,6 @@ const App = () => {
 	const [typeTransaction, setTypeTransaction] = useState('all')
 	const [newArrayTransaction, setNewArrayTransaction] = useState([])
 
-	// const newArrayTransaction = [...transaction]
-	// const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
-	// const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
-
 	const influence = transaction.filter(item => item.type === 'influence')
 	const paycheck = transaction.filter(item => item.type === 'paycheck')
 
