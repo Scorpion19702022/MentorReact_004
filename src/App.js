@@ -41,14 +41,6 @@ const App = () => {
 			setNewArrayTransaction(transaction)
 		}
 
-		// if (typeTransaction === 'in') {
-		// 	setTransaction(influence)
-		// } else if (typeTransaction === 'out') {
-		// 	setTransaction(paycheck)
-		// } else if (typeTransaction === 'all') {
-		// 	setTransaction(transaction)
-		// }
-
 		console.log('funkcja transaction:')
 		console.log(transaction)
 		console.log('funkcja newArrayTransaction:')
