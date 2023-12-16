@@ -16,27 +16,22 @@ const App = () => {
 	const [typeTransaction, setTypeTransaction] = useState('all')
 
 	const newArrayTransaction = [...transaction]
-
 	const selectTransactionInfluence = newArrayTransaction.filter(item => item.type === 'influence')
 	const selectTransactionPaycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
 
-	useEffect(() => {
+	const handleChangeTypeTransaction = type => {
+		setTypeTransaction(type)
+
 		if (typeTransaction === 'in') {
 			setTransaction(selectTransactionInfluence)
 		} else if (typeTransaction === 'out') {
 			setTransaction(selectTransactionPaycheck)
+		} else if (typeTransaction === 'all') {
+			setTransaction(newArrayTransaction)
 		}
-	}, [selectTransactionInfluence, selectTransactionPaycheck, typeTransaction])
 
-	const handleChangeTypeTransaction = type => {
-		setTypeTransaction(type)
-		if (typeTransaction === 'all') {
-			return transaction
-		}
+		console.log(newArrayTransaction)
 	}
-
-	// console.log(transaction)
-	// console.log(newArrayTransaction)
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
@@ -75,8 +70,8 @@ const App = () => {
 				return { ...prevState, influence: prevState.influence - Number(trans.amount) }
 			})
 		}
-		// console.log(count)
-		// console.log(trans)
+		console.log(count)
+		console.log(trans)
 	}
 
 	return (
