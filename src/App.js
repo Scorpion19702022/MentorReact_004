@@ -34,11 +34,11 @@ const App = () => {
 		setNewArrayTransaction(...transaction)
 
 		if (typeTransaction === 'in') {
-			setTransaction(influence)
+			setNewArrayTransaction(influence)
 		} else if (typeTransaction === 'out') {
-			setTransaction(paycheck)
+			setNewArrayTransaction(paycheck)
 		} else if (typeTransaction === 'all') {
-			setTransaction(transaction)
+			setNewArrayTransaction(transaction)
 		}
 
 		// if (typeTransaction === 'in') {
