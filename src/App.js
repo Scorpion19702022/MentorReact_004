@@ -14,31 +14,33 @@ const App = () => {
 	})
 
 	const [typeTransaction, setTypeTransaction] = useState('all')
-	const [newArrayTransaction, setNewArrayTransaction] = useState([...transaction])
+	// const [newArrayTransaction, setNewArrayTransaction] = useState([...transaction])
 
-	const influence = newArrayTransaction.filter(item => item.type === 'influence')
-	const paycheck = newArrayTransaction.filter(item => item.type === 'paycheck')
+	const influence = transaction.filter(item => item.type === 'influence')
+	const paycheck = transaction.filter(item => item.type === 'paycheck')
+
+	const newtab = [...transaction]
+	console.log('new tab to')
+	console.log(newtab)
 
 	// useEffect(() => {
-	// 	let test = [...transaction]
-
-	// 	if (typeTransaction === 'all') {
-	// 		setTransaction(transaction)
-	// 		console.log('w ifie')
-	// 		console.log(transaction)
-	// 	} else if (typeTransaction === 'in') {
-	// 		setTransaction(influence)
-	// 		console.log('wpłata')
-	// 		console.log(transaction)
-	// 	} else if (typeTransaction === 'out') {
-	// 		setTransaction(paycheck)
-	// 		console.log('wypłata')
-	// 		console.log(transaction)
-	// 	}
-	// }, [typeTransaction, transaction])
+	// 	console.log(influence)
+	// 	console.log(paycheck)
+	// }, [paycheck, influence])
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
+
+		if (typeTransaction === 'all') {
+			console.log(transaction)
+			return transaction
+		} else if (typeTransaction === 'in') {
+			console.log('influence')
+			return influence
+		} else if (typeTransaction === 'out') {
+			console.log('paycheck')
+			return paycheck
+		}
 
 		console.log('funkcja transaction:')
 		console.log(transaction)
