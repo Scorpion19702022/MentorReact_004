@@ -22,27 +22,28 @@ const App = () => {
 	useEffect(() => {
 		console.log(influence)
 		console.log(paycheck)
-	}, [paycheck, influence])
+		console.log(transaction)
+	}, [paycheck, influence, transaction])
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
 
 		if (typeTransaction === 'all') {
 			setTransaction(transaction)
-			console.log('w ifie all')
-			console.log(transaction)
+			// console.log('w ifie all')
+			// console.log(transaction)
 		} else if (typeTransaction === 'in') {
 			setTransaction(influence)
-			console.log('w ifie wpłata')
-			console.log(transaction)
+			// console.log('w ifie wpłata')
+			// console.log(transaction)
 		} else if (typeTransaction === 'out') {
 			setTransaction(paycheck)
-			console.log('w ifie wypłata')
-			console.log(transaction)
+			// console.log('w ifie wypłata')
+			// console.log(transaction)
 		}
 
 		console.log('funkcja transaction:')
-		console.log(transaction)
+		// console.log(transaction)
 	}
 
 	const handleNewAddTransaction = newTransaction => {
