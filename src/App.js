@@ -18,7 +18,7 @@ const App = () => {
 	const influence = transaction.filter(item => item.type === 'influence')
 	const paycheck = transaction.filter(item => item.type === 'paycheck')
 
-	// const newArrayTransation = [...transaction]
+	const newArrayTransation = [...transaction]
 
 	// useEffect(() => {
 	// 	if (typeTransaction === 'all') {
@@ -43,6 +43,8 @@ const App = () => {
 		console.log('funkcja transaction:')
 		// console.log(transaction)
 	}
+
+	console.log(newArrayTransation)
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
