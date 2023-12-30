@@ -21,8 +21,8 @@ const App = () => {
 
 	useEffect(() => {
 		console.log(influence)
-		console.log(paycheck)
-		console.log(transaction)
+		// console.log(paycheck)
+		// console.log(transaction)
 	}, [paycheck, influence, transaction])
 
 	const handleChangeTypeTransaction = type => {
