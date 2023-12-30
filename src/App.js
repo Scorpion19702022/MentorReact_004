@@ -29,8 +29,9 @@ const App = () => {
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
 		console.log(typeTransaction)
-
-		if (typeTransaction === 'in') {
+		if (typeTransaction === 'all') {
+			return setTransaction(prevState => [...prevState])
+		} else if (typeTransaction === 'in') {
 			setTransaction(influence)
 			// console.log('w ifie wpłata')
 			// console.log(allTransaction)
