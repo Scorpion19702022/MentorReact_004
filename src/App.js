@@ -26,7 +26,11 @@ const App = () => {
 		setShowInfluence(showInfluence, ...influence)
 		setShowPayCheck(showPayCheck, ...paycheck)
 		setShowAll(transaction, ...transaction)
-	}, [influence, paycheck, showInfluence, showPayCheck, transaction])
+		console.log('trans w hook', transaction)
+		console.log('showIn w hook', showInfluence)
+		console.log('showPay w hook', showPayCheck)
+		console.log('show all w hook', showAll)
+	}, [influence, paycheck, showInfluence, showPayCheck, transaction, showAll])
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
@@ -40,10 +44,10 @@ const App = () => {
 		}
 	}
 
-	console.log('trans', transaction)
-	console.log('showIn', showInfluence)
-	console.log('showPay', showPayCheck)
-	console.log('show all', showAll)
+	// console.log('trans', transaction)
+	// console.log('showIn', showInfluence)
+	// console.log('showPay', showPayCheck)
+	// console.log('show all', showAll)
 
 	// useEffect(() => {
 	// 	if (typeTransaction === 'all') {
