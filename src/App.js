@@ -23,11 +23,10 @@ const App = () => {
 	const [showAll, setShowAll] = useState([])
 
 	useEffect(() => {
-		setShowInfluence(...influence)
-		setShowPayCheck(...paycheck)
-		setShowAll(...transaction)
-		console.log(showInfluence)
-	}, [influence, paycheck, transaction, showInfluence])
+		setShowInfluence(showInfluence, influence)
+		setShowPayCheck(showPayCheck, paycheck)
+		setShowAll(transaction)
+	}, [influence, paycheck, showInfluence, showPayCheck, transaction])
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
@@ -40,6 +39,30 @@ const App = () => {
 			setTransaction(showPayCheck)
 		}
 	}
+
+	console.log('trans', transaction)
+	console.log('showIn', showInfluence)
+	console.log('showPay', showPayCheck)
+	console.log('show all', showAll)
+
+	// useEffect(() => {
+	// 	if (typeTransaction === 'all') {
+	// 		setTransaction(prevState => prevState)
+	// 	}
+	// 	console.log(transaction)
+	// }, [typeTransaction, transaction])
+
+	// const handleChangeTypeTransaction = type => {
+	// 	setTypeTransaction(type)
+
+	// 	if (typeTransaction === 'all') {
+	// 		setTransaction(transaction)
+	// 	} else if (typeTransaction === 'in') {
+	// 		setTransaction(influence)
+	// 	} else if (typeTransaction === 'out') {
+	// 		setTransaction(paycheck)
+	// 	}
+	// }
 
 	const handleNewAddTransaction = newTransaction => {
 		setTransaction([...transaction, newTransaction])
