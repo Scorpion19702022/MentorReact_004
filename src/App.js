@@ -23,9 +23,9 @@ const App = () => {
 	const [showAll, setShowAll] = useState([])
 
 	useEffect(() => {
-		setShowInfluence(showInfluence, influence)
-		setShowPayCheck(showPayCheck, paycheck)
-		setShowAll(transaction)
+		setShowInfluence(showInfluence, ...influence)
+		setShowPayCheck(showPayCheck, ...paycheck)
+		setShowAll(transaction, ...transaction)
 	}, [influence, paycheck, showInfluence, showPayCheck, transaction])
 
 	const handleChangeTypeTransaction = type => {
