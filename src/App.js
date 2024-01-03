@@ -19,8 +19,12 @@ const App = () => {
 	const paycheck = transaction.filter(item => item.type === 'paycheck')
 
 	useEffect(() => {
-		setTypeTransaction(typeTransaction)
-	}, [typeTransaction])
+		console.log('---hook---')
+		console.log(transaction)
+		console.log(influence)
+		console.log(paycheck)
+		console.log(typeTransaction)
+	}, [influence, paycheck, transaction, typeTransaction])
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
@@ -36,6 +40,7 @@ const App = () => {
 		console.log(transaction)
 		console.log(influence)
 		console.log(paycheck)
+		console.log(typeTransaction)
 	}
 
 	// console.log('trans', transaction)
