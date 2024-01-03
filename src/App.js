@@ -22,8 +22,9 @@ const App = () => {
 	// 	setTransaction(transaction)
 	// }, [transaction])
 
-	console.log(influence)
-	console.log(paycheck)
+	// console.log(influence)
+	// console.log(paycheck)
+	console.log(transaction)
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
@@ -34,6 +35,8 @@ const App = () => {
 		} else if (typeTransaction === 'out') {
 			setTransaction(paycheck)
 			// console.log(typeTransaction)
+		} else {
+			setTransaction(transaction)
 		}
 		// console.log('---fun---')
 		// console.log(transaction)
