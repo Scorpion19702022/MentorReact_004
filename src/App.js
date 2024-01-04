@@ -18,16 +18,18 @@ const App = () => {
 	const influence = transaction.filter(item => item.type === 'influence')
 	const paycheck = transaction.filter(item => item.type === 'paycheck')
 
-	const [all, setAll] = useState([transaction])
+	// const [all, setAll] = useState([transaction])
 
-	useEffect(() => {}, [])
-	console.log(all)
+	// useEffect(() => {}, [])
+	// console.log(all)
 	console.log(transaction)
+	console.log(influence)
+	console.log(paycheck)
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
 		if (typeTransaction === 'all') {
-			setTransaction(all)
+			setTransaction(transaction)
 		} else if (typeTransaction === 'in') {
 			setTransaction(influence)
 			// console.log(typeTransaction)
