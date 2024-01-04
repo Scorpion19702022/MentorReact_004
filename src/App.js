@@ -15,28 +15,36 @@ const App = () => {
 
 	const [typeTransaction, setTypeTransaction] = useState('all')
 
-	const influence = transaction.filter(item => item.type === 'influence')
-	const paycheck = transaction.filter(item => item.type === 'paycheck')
+	// const influence = transaction.filter(item => item.type === 'influence')
+	// const paycheck = transaction.filter(item => item.type === 'paycheck')
 
-	// const [all, setAll] = useState([transaction])
+	const [resultTransaction, setResultTransaction] = useState([])
 
-	// useEffect(() => {}, [])
+	useEffect(() => {
+		if (typeTransaction === 'in') {
+			const influence = transaction.filter(item => item.type === 'influence')
+			setResultTransaction(influence)
+		} else if (typeTransaction === 'out') {
+			const paycheck = transaction.filter(item => item.type === 'paycheck')
+			setResultTransaction(paycheck)
+		}
+	}, [typeTransaction])
 	// console.log(all)
-	console.log(transaction)
-	console.log(influence)
-	console.log(paycheck)
+	// console.log(transaction)
+	// console.log(influence)
+	// console.log(paycheck)
 
 	const handleChangeTypeTransaction = type => {
 		setTypeTransaction(type)
-		if (typeTransaction === 'all') {
-			setTransaction(transaction)
-		} else if (typeTransaction === 'in') {
-			setTransaction(influence)
-			// console.log(typeTransaction)
-		} else if (typeTransaction === 'out') {
-			setTransaction(paycheck)
-			// console.log(typeTransaction)
-		}
+		// if (typeTransaction === 'all') {
+		// 	setTransaction(transaction)
+		// } else if (typeTransaction === 'in') {
+		// 	setTransaction(influence)
+		// 	// console.log(typeTransaction)
+		// } else if (typeTransaction === 'out') {
+		// 	setTransaction(paycheck)
+		// 	// console.log(typeTransaction)
+		// }
 	}
 
 	const handleNewAddTransaction = newTransaction => {
@@ -92,7 +100,12 @@ const App = () => {
 				translationLength={transaction.length}
 				changeTypeTransaction={handleChangeTypeTransaction}
 			/>
-			<Transactions transaction={transaction} deleteTransaction={handleDeleteTransation} />
+			<Transactions
+				resultTransaction={resultTransaction}
+				deleteTransaction={handleDeleteTransation}
+				typeTransaction={typeTransaction}
+				transaction={transaction}
+			/>
 		</div>
 	)
 }

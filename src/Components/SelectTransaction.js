@@ -5,7 +5,7 @@ const SelectTransaction = ({ changeTypeTransaction }) => {
 
 	const handleSelectTransaction = e => {
 		setSelectTransation(e.target.value)
-		changeTypeTransaction(selectTransation)
+		changeTypeTransaction(e.target.value)
 	}
 
 	return (
